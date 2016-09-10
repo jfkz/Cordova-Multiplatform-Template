@@ -15,7 +15,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('default', function () {
     // Compile Sass, TypeScript and inject files into index.html
-    runSequence('default:clean', 'default:html', 'default:scss', 'default:ts', 'default:inject');
+    runSequence('default:clean', 'default:html', 'default:scss', 'default:cs', 'default:inject');
 });
 
 gulp.task('initialize', function () {

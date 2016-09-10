@@ -1,6 +1,8 @@
 ﻿var gulp = require('gulp');
 var paths = require('./paths');
 var plugins = require('gulp-load-plugins')();
+var coffee = require('gulp-coffee');
+var concat = require('gulp-concat');
 var tsProject = plugins.typescript.createProject(paths.ts.tsconfig);
 
 // Compile Sass
@@ -20,6 +22,17 @@ gulp.task('default:ts', function () {
         .pipe(plugins.typescript(tsProject))
         .pipe(plugins.ngAnnotate())
         .pipe(gulp.dest(paths.root));
+});
+
+// Compile Coffescript
+// https://github.com/contra/gulp-coffee
+gulp.task('default:cs', function () {
+    return gulp.src(paths.cs.sources)
+	.pipe(concat(paths.cs.mergedName))
+        .pipe(gulp.dest(paths.cs.merged))
+        .pipe(coffee({bare: true})) // .on('error', gutil.log))
+	.pipe(plugins.ngAnnotate())
+        .pipe(gulp.dest(paths.cs.out));
 });
 
 // Move templates and minify

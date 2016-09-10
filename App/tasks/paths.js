@@ -56,5 +56,13 @@ module.exports = {
         sources: [root + 'app.ts', root + 'constants/**/*.ts', root + 'modules/**/*.ts'],
         tsd: root + 'tsd.json',
         tsconfig: root + 'tsconfig.json'
+    },
+
+    cs: {
+        path: root,
+        sources: [ root + 'constants/**/*.coffee', root + 'app.coffee', root + 'coffees/**/*.coffee' ],
+	out: www + 'debug/',
+	merged: www + 'debug/',
+	mergedName: 'app.coffee'
     }
 };
